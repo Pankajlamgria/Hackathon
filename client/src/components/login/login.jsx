@@ -1,6 +1,7 @@
 import { useState } from "react";
-import letzTalkDark from "../../assets/letztalk-dark.png";
-// import { letzTalkWhite } from '../../assets/letxtalk-white.png';
+import letzTalk from "../../assets/letztalk-white.png";
+import "./login.scss";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const handleSubmit = (e) => {
@@ -17,7 +18,15 @@ const Login = () => {
   return (
     <div className="login-page">
       <div className="login">
-        <img src={letzTalkDark} alt="Logo" className="login-logo" />
+        <div>
+          <img
+            src={letzTalk}
+            alt="Logo"
+            width="200px"
+            height="auto"
+            className="login-logo"
+          />
+        </div>
         <form className="login-form" onSubmit={handleSubmit}>
           <input
             autoFocus
@@ -38,17 +47,19 @@ const Login = () => {
             className="login-input"
           />
 
-          <button type="submit" onClick={() => console.log("hda")}>
+          <button
+            type="submit"
+            className="login-btn"
+            onClick={() => console.log("hda")}
+          >
             Login
           </button>
         </form>
       </div>
 
-      <div className="signup">
-        <h3> Don't have a account </h3>
-        <button className="signup-btn" onClick={() => console.log("hda")}>
-          Sign up
-        </button>
+      <div className="signup-area">
+        <p> Don't have a account </p>
+        <Link to="/signup">Sign Up</Link>
       </div>
     </div>
   );

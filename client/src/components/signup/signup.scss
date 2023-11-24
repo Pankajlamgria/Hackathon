@@ -1,7 +1,10 @@
-
-.login-page {
+.signup-page {
   width: 100%;
-  background-image: linear-gradient(to top,rgba(33, 33, 34, 0.647), rgba(0, 0, 0, 0.362)),
+  background-image: linear-gradient(
+      to top,
+      rgba(33, 33, 34, 0.553),
+      rgba(0, 0, 0, 0.1)
+    ),
     url("../../assets/background.jpg");
   min-height: 100vh;
   display: flex;
@@ -11,7 +14,8 @@
   font-family: "Nunito";
 }
 
-.login {
+.signup {
+  animation: fadeIn 1s ease-in-out;
   width: 350px;
   display: flex;
   flex-direction: column;
@@ -28,14 +32,14 @@
   }
 }
 
-.login-form {
+.signup-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.login-input {
+.signup-input {
   display: block;
   padding: 8px;
   margin: 5px;
@@ -51,7 +55,7 @@
   }
 }
 
-.login-btn {
+.signup-btn {
   width: 250px;
   padding: 5px 0;
   background-color: #3b82f6;
@@ -64,7 +68,8 @@
   margin-top: 0.8rem;
 }
 
-.signup-area {
+.login-area {
+  animation: slideInUp 1s ease-in-out;
   width: 350px;
   height: 60px;
   border: 2px solid rgba(128, 128, 128, 0.701);
@@ -81,7 +86,7 @@
     color: white;
   }
 
-  a{
+  a {
     text-decoration: none;
     color: #3b82f6;
     font-weight: bold;
