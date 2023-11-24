@@ -10,6 +10,8 @@ app.use(express.json());
 const port=process.env.Port||4000;
 connect();
 app.use('/api/auth',require('./routes/auth'));
+app.use("/api/userpost",require("./routes/userpost"));
+app.use("/api/friends",require("./routes/friends"));
 
 
 app.listen(port,()=>{
