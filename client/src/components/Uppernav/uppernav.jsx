@@ -12,9 +12,8 @@ const Uppernav = () => {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-        <h4 > HEllo </h4>
+        <h4 >LetzConnect</h4>
       <DarkMode />
-      {/* <Profile /> */}
     </div>
   );
 };

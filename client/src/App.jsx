@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { Login, SignUp, Layout, Home, Search, Profile } from "./components";
 import { BrowserRouter as Router } from "react-router-dom";
+import LetztalkState from "./context/LetztalkState";
 
 import "./App.scss";
 
 const App = () => {
   return (
     <div className="App">
+      <LetztalkState>
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -22,6 +24,7 @@ const App = () => {
 
         </Routes>
       </Router>
+      </LetztalkState>
     </div>
   );
 };

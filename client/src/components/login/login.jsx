@@ -1,19 +1,41 @@
 import { useState } from "react";
 import letzTalk from "../../assets/letztalk-white.png";
 import "./login.scss";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+
 
 const Login = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("he");
-    // Post the data
-  };
+  const [logindetial,setlogindetail]=useState({email:"",password:""});
+  const host="http://localhost:8000";
+  const navigate=useNavigate();
 
-  const [userCred, setUserCred] = useState("");
-  const [userPass, setUserPass] = useState("");
-  const [text, setText] = useState("");
-  const [pass, setPass] = useState("");
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    const response=await fetch(`${host}/api/auth/login`,{
+      method:'POST',
+      headers:{
+        "Content-Type":"application/json",
+      },
+      body:JSON.stringify({email:logindetial.email,password:logindetial.password}),
+    });
+    const logninres=await response.json();
+    if(logninres.success){
+      localStorage.setItem('letztalktoken',logninres.authtoken);
+      localStorage.setItem("myemai",logindetial.email);
+      localStorage.setItem("myImgurl",logninres.finduser.profileurl);
+      localStorage.setItem("username",logninres.finduser.username);
+      
+      console.log(logninres);
+      navigate('/');
+      // window.location.reload(false);
+    }
+    else{
+      alert(logninres.error);
+    }
+  };
+  const handledetailschange=(e)=>{
+    setlogindetail({...logindetial,[e.target.name]:e.target.value});
+  }
 
   return (
     <div className="login-page">
@@ -30,11 +52,13 @@ const Login = () => {
         <form className="login-form" onSubmit={handleSubmit}>
           <input
             autoFocus
-            type="text"
+            type="email"
             placeholder="Phone Number, username or email"
             required
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            id="email"
+            name="email"
+            // value={text}
+            onChange={handledetailschange}
             className="login-input"
           />
           <input
@@ -42,8 +66,10 @@ const Login = () => {
             type="password"
             placeholder="Password"
             required
-            value={pass}
-            onChange={(e) => setPass(e.target.value)}
+            id="password"
+            name="password"
+            // value={pass}
+            onChange={handledetailschange}
             className="login-input"
           />
 

@@ -11,7 +11,7 @@ const SECRET=process.env.Secret;
 router.post("/signin",async(req,res)=>{
     const bodydata=req.body;
     let success=false;
-    if(bodydata.username===""||bodydata.email===""||bodydata.password==""||bodydata.email===0||bodydata.gender===""){
+    if(bodydata.username===""||bodydata.email===""||bodydata.password==""||bodydata.email===0){
         res.json({success,error:"Invalid user details."});
     }
     else if(bodydata.username.length<=2||bodydata.password.length<=5||bodydata.email.length<=4){
@@ -31,7 +31,6 @@ router.post("/signin",async(req,res)=>{
                     email:bodydata.email,
                     password:strongpswd,
                     phoneNumber:bodydata.phoneNumber,
-                    gender:bodydata.gender,
                     profileurl:bodydata.profileurl
                 })
                 const token={
